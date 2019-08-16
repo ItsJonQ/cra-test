@@ -7,7 +7,7 @@ const staticDir = path.join(buildDir, '/static')
 const buildJsFilesPath = path.join(staticDir, '/js/**/*.js')
 const loaderJsPath = path.join(buildDir, 'm.js')
 
-const baseFilePath = 'https://epic-perlman-1a7654.netlify.com/'
+const baseFilePath = 'epic-perlman-1a7654.netlify.com/'
 
 function generateJsScript(jsFileName) {
   if (!jsFileName) {
@@ -15,10 +15,13 @@ function generateJsScript(jsFileName) {
   }
 
   return `
+  const search = new URL(window.location).searchParams;
+  const id = search.get('sideload');
+  const prefix = id ? id + '--' : '';
 	const script = document.createElement('script');
 	script.type = 'text/javascript';
 	script.async = true;
-	script.src = '${baseFilePath}/static/js/${jsFileName}';
+  script.src = 'https://' + prefix + '${baseFilePath}/static/js/${jsFileName}';
 	document.getElementsByTagName('body')[0].appendChild(script);
 	`
 }
