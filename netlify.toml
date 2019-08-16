@@ -1,0 +1,11 @@
+# Allows for JS single-page-app to route correctly
+[[redirects]]
+	from = "/*"
+	to = "/index.html"
+	status = 200
+
+# Allows for external GET request to load .json data
+[[headers]]
+	for = "/*"
+		[headers.values]
+		Access-Control-Allow-Origin = "*"
