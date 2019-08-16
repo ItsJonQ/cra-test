@@ -7,12 +7,21 @@
     "react-dom": "^16.9.0",
     "react-scripts": "3.1.1"
   },
+  "devDependencies": {
+    "glob": "7.1.4",
+    "react-app-rewire-disable-chunks": "0.0.1",
+    "react-app-rewire-micro-frontends": "0.0.1",
+    "react-app-rewired": "2.1.3"
+  },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build:app": "react-app-rewired build",
+    "build:loader": "node scripts/generate-loader-script.js",
+    "build": "npm run build:app && npm run build:loader",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "config-overrides-path": "node_modules/react-app-rewire-disable-chunks",
   "eslintConfig": {
     "extends": "react-app"
   },
